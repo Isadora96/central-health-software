@@ -1,3 +1,18 @@
+### Project developed for the program WTech Upskilling, in Ladies in Tech IBM Community. 
+`
+* WTech Upskilling was another training provided by the Ladies in Tech community, and aimed to accelerate the development of regular professionals with up to two years of experience in technical areas, indicated by their managers.
+
+* The entire project was developed with market technologies (Node.js, typescript, passport) and also those used at IBM, such as LogAnalysis and CloudantDB. This repository is the finalized software delivered as a requirement for completing the training.
+
+* In order to improve the software and my knowledge, this project will undergo some modifications during 2024.
+
+  1. Divide functionalities into microservices.
+  2. Build the front-end.
+  3. Enable anyone to interact with the software (currently only IBM employees can)
+  4. Make the application go live.
+     
+`
+
 # CENTRAL HEALTH SOFTWARE
 
 `CHST is a system made for hospitals in the state of São Paulo for patient registration. Its main objective is to collect data on cases of diseases that have been successfully treated in order to make treatment available to all hospitals in the state.`
