@@ -43,7 +43,7 @@
 ### On root folder
 
 - Copy file `.env-example` into a `.env` file
-- Fill the [env variables](https://gist.github.ibm.com/isadora-c-lopes/57649de9007ba2192969fd9a6632a80e) in `.env`
+- Fill the env variables in `.env`
 - Copy `key.pem` and `cert.pem`
 - Set ENV to local
 - Run `export $(cat .env | xargs)` in order to export the environment variables
