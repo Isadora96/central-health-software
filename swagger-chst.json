@@ -1,0 +1,635 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Central Health Software API",
+    "description": "CHST reference view.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Bearer token"
+    }
+  },
+  "paths": {
+    "/api/v1/patient/{id}": {
+      "get": {
+        "tags": [
+          "Get single patient"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "example": [
+                {
+                  "success": true,
+                  "data": {
+                    "_id": "e7abae283ce5fbddadb569b65ha54de604",
+                    "_rev": "9-199934f7df601b85bsx4d67addf8d337",
+                    "name": "Some name",
+                    "identity": "000000000-00",
+                    "birth": "00/00/0000",
+                    "gender": "feminine",
+                    "symptoms": "headache",
+                    "doctor_uid": "0000000",
+                    "created_at": "Sat, 11 Set 2023 19:14:15 GMT"
+                  }
+                }
+              ]
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "example": [
+                { 
+                  "success": false, 
+                  "message": "You are not authorized to access this patient"
+                }
+              ]
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "example": [
+                { 
+                  "success": false, 
+                  "message": "Patient not found with id of f8ahae293ce5dbadb569b65ha99de504"
+                }
+              ]
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "example": [
+                { 
+                  "message": "Internal Server Error"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Update single patient"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "symptoms": {
+                  "example": "any"
+                },
+                "identity": {
+                  "example": "any"
+                },
+                "birth": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "example": [
+                {
+                  "success": true,
+                  "data": {
+                    "ok": true,
+                    "id": "e7abae883ce5fb40eb366b6176dde904",
+                    "rev": "9-199934f7df601b85adc4d58addf8d337"
+                  }
+                }
+              ]
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "example": [
+                { 
+                  "success": false, 
+                  "message": "You are not authorized to access this patient"
+                }
+              ]
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "example": [
+                { 
+                  "success": false, 
+                  "message": "Patient f8ahae293ce5dbadb569b65ha99de504 id not found"
+                }
+              ]
+            }
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "example": [
+                { 
+                  "message": "Internal Server Error"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Delete single patient"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "example": [
+                {
+                  "success": true,
+                  "data": {
+                    "ok": true,
+                    "id": "f8ahae293ce5dbadb569b65ha99de504",
+                    "rev": "5-f84596dcc703784728312e587f126304"
+                  }
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "example": [
+                { 
+                  "success": false, 
+                  "message": "You are not authorized to delete this patient"
+                }
+              ]
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "example": [
+                {
+                  "success": false,
+                  "message": "Pacient id not found"
+                }
+              ]
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "example": [
+                { 
+                  "message": "Internal Server Error"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/patient": {
+      "get": {
+        "tags": [
+          "Get patients"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "example": [
+                {
+                  "success": true,
+                  "data": [
+                    {
+                      "_id": "f8abae283ce5fb40db569b6572dde604",
+                      "_rev": "2-199934f7df601b85adc4d58addf8d337",
+                      "name": "Isadora Cirino Lopes",
+                      "identity": "444333222-10",
+                      "birth": "00/00/0000",
+                      "gender": "feminine",
+                      "symptoms": "headache",
+                      "doctor_uid": "000000",
+                      "created_at": "Sat, 11 Nov 2023 19:14:15 GMT"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "example": [
+                {
+                  "success": false,
+                  "message": "Unauthorized. Patients does not correspond with doctor 000000"
+                }
+              ]
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "example": [
+                { 
+                  "message": "Internal Server Error"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Create a patient"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "symptoms": {
+                  "example": "any"
+                },
+                "identity": {
+                  "example": "any"
+                },
+                "birth": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "example": [
+                {
+                  "success": true,
+                  "data": {
+                    "patient": "f8abae283ce5fb40db569b6572dde504",
+                    "doctor": "000000"
+                  }
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "example": [
+                {
+                  "success": false,
+                  "message": "Patient already exists! ID: f8abae283ce5fb40db569b6572dde504"
+                }
+              ]
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "example": [
+                { 
+                  "message": "Internal Server Error"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/doctor/treatment/patient/{id}": {
+      "get": {
+        "tags": [
+          "Get patient treatment file content"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "example": [
+                  "Some file content."
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "example": [
+                {
+                  "message": "No document found with id b909f975d1dcb4c6431b08215a4af9bf"
+                }
+              ]
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "example": [
+                { 
+                  "message": "Internal Server Error"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Create patient treatment file"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "file",
+            "in": "files",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "cid",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "example": [
+                {
+                  "message": "You already created a treatment for patient d909f975d1dcb4c6431b08215a4af9bf, please update."
+                }
+              ]
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "example": [
+                {
+                  "success": false,
+                  "message": "Unauthorized. Patient does not correspond with doctor 0000000"
+                }
+              ]
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "example": [
+                { 
+                  "message": "Internal Server Error"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Update patient treatment file content"
+        ],
+        "description": "Cured must be cured, in treatment, incurable or no return",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "file",
+            "in": "files",
+            "required": true,
+            "type": "file"
+          },
+          {
+            "name": "cured",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "example": [
+                {
+                  "success": true,
+                  "data": {
+                    "patient": "f6abae283ce5fb40db569b6572dde604",
+                    "doctor": "000000",
+                    "cured": "incurable"
+                  }
+                }
+              ]
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "example": [
+                {
+                  "message": "cured must be cured, in treatment, incurable, no return"
+                }
+              ]
+            }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "example": [
+                {
+                  "success": false,
+                  "reason": "No treatment file found for patient f6abae283ce5fb40db569b6572dde604"
+                },
+                { 
+                  "success": false, 
+                  "missing_data": "file or cured"
+                }
+              ]
+            }
+          },
+          "409": {
+            "description": "Conflict"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "example": [
+                { 
+                  "message": "Internal Server Error"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/treatment": {
+      "get": {
+        "tags": [
+          "Query treatments"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "cured",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "type": "number"
+          },
+          {
+            "name": "cid",
+            "in": "query",
+            "type": "number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "example": [
+                {
+                  "success": true,
+                  "data": [
+                    {
+                      "cid": "10",
+                      "cured": "incurable",
+                      "patient": {
+                        "birth": "00/00/0000",
+                        "gender": "feminine",
+                        "symptoms": "headache"
+                      },
+                      "treatment": "Content"
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "example": [
+                { 
+                  "message": "Internal Server Error"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "watch": ["auth"],
+    "ext": "ts",
+    "ignore": ["/src/**/*.d.ts"],
+    "exec": "ts-node .src/index.ts"
+  }
